@@ -1,0 +1,246 @@
+/*  GLOBAL STYLES  */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  background: linear-gradient(120deg,#667eea,#764ba2);
+  transition: background 0.3s, color 0.3s;
+}
+
+body.dark {
+  background: #121212;
+  color: #fff;
+}
+
+/* HEADER */
+header {
+  display: flex;
+  justify-content: space-between;
+  padding: 15px 20px;
+  color: #fff;
+  background: rgba(0,0,0,0.3);
+}
+
+.header-controls button,
+.header-controls select {
+  margin-left: 5px;
+}
+
+/* CONTAINER & CARDS  */
+.container {
+  padding: 15px;
+  max-width: 1200px;
+  margin: auto;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit,minmax(180px,1fr));
+  gap: 10px;
+}
+
+.card {
+  background: #fff;
+  padding: 15px;
+  border-radius: 12px;
+  text-align: center;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+body.dark .card {
+  background: #1f1f1f;
+  color: #fff;
+}
+
+/*  CHARTS  */
+.charts {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+  margin-top: 15px;
+}
+
+.chart-box {
+  background: #fff;
+  border-radius: 12px;
+  padding: 10px;
+  height: 250px;
+}
+
+body.dark .chart-box {
+  background: #1f1f1f;
+}
+
+canvas {
+  width: 100% !important;
+  height: 100% !important;
+}
+
+/*  INPUTS & BUTTONS  */
+input, select, button {
+  padding: 8px;
+  margin: 5px;
+  border-radius: 6px;
+  border: none;
+}
+
+button {
+  background: #667eea;
+  color: #fff;
+  cursor: pointer;
+}
+
+button:hover {
+  opacity: 0.8;
+}
+
+/*  BADGES  */
+.badge {
+  padding: 4px 8px;
+  border-radius: 8px;
+  color: #fff;
+  font-size: 12px;
+}
+
+.income { background: #2ecc71; }
+.expense { background: #e74c3c; }
+
+/*  INSIGHTS  */
+.insights {
+  margin-top: 15px;
+  background: #fff;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+body.dark .insights {
+  background: #1f1f1f;
+}
+
+/*  ADMIN PANEL  */
+#adminPanel {
+  display: none;
+  flex-wrap: wrap;
+  gap: 5px;
+}
+
+#adminPanel input,
+#adminPanel select,
+#adminPanel button {
+  flex: 1 1 100%;
+  margin: 5px 0;
+  box-sizing: border-box;
+}
+
+@media (min-width: 601px) and (max-width: 1024px) {
+  #adminPanel input,
+  #adminPanel select,
+  #adminPanel button {
+    flex: 1 1 calc(50% - 10px);
+  }
+}
+
+/*  RESPONSIVE  */
+@media(max-width:768px) {
+  .charts {
+    grid-template-columns: 1fr;
+  }
+  .chart-box {
+    height: 220px;
+  }
+}
+
+@media(max-width:500px) {
+  header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .header-controls {
+    margin-top: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    width: 100%;
+  }
+  .header-controls select,
+  .header-controls button {
+    flex: 1 1 48%;
+    margin: 3px 0;
+    min-width: 100px;
+  }
+}
+/*  TABLE WRAPPER  */
+.table-wrapper {
+  width: 100%;
+  overflow-x: hidden; /* default: no scroll */
+  box-sizing: border-box;
+  padding-bottom: 5px;
+}
+
+/*  TABLE  */
+table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 8px;
+  border-radius: 10px;
+  table-layout: auto;  /* columns adjust based on content */
+  min-width: 0;        /* allow shrinking */
+}
+
+/*  HEADER  */
+th {
+  background: #667eea;
+  color: #fff;
+  padding: 10px 8px;
+  border-radius: 8px;
+  text-align: center;
+  font-weight: bold;
+  word-break: break-word; /* wrap long text */
+}
+
+/*  CELLS  */
+td {
+  background: #f9f9f9;
+  padding: 8px 6px;
+  border-radius: 8px;
+  text-align: center;
+  word-break: break-word; /* wrap long text */
+  vertical-align: middle;
+}
+
+/* Hover */
+tr:hover td {
+  background: #f1f1f1;
+}
+
+/* Dark mode */
+body.dark table { background: #1f1f1f; }
+body.dark th { background: #444; }
+body.dark td { background: #2a2a2a; }
+body.dark tr:hover td { background: #333; }
+
+/*  SHRINK ON SMALL SCREENS  */
+@media (max-width: 768px) {
+  th, td {
+    padding: 6px 4px;
+    font-size: 12px;
+  }
+}
+
+/*  HORIZONTAL SCROLL ON VERY SMALL SCREENS  */
+@media (max-width: 480px) {
+  .table-wrapper {
+    overflow-x: auto; /* enable horizontal scroll */
+  }
+  table {
+    min-width: 500px; /* table wider than container triggers scroll */
+  }
+  th, td {
+    padding: 6px 4px;
+    font-size: 11px;
+  }
+}
